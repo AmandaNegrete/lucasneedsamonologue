@@ -11,7 +11,7 @@ app.use(express.static('docs'));
 
 // Serve index.html for the root route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'docs', 'index.html'));  // Corrected path
+    res.sendFile(path.join(__dirname,'index.html'));  // Corrected path
 });
 
 const db = new sqlite3.Database('./monologues.db');
