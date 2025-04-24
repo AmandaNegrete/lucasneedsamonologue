@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Add a New Monologue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Monologue</h1>
+        <form id="add-monologue-form">
+            <!-- Row 1: Title, Author, Category -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required />
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" required />
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" required />
+                </div>
+            </div>
+        
+            <!-- Row 2: Description and Full Text -->
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="full_text">Full Monologue</label>
+                    <textarea id="full_text" name="full_text" required></textarea>
+                </div>
+            </div>
+        
+            <!-- Row 3: Era and Play Name -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="era">Era (Contemporary/ Classical)</label>
+                    <input type="text" id="era" name="era" required />
+                </div>
+                <div class="form-group">
+                    <label for="play_name">Play Name</label>
+                    <input type="text" id="play_name" name="play_name" required />
+                </div>
+            </div>
+        
+            <!-- Add Button -->
+            <div class="form-footer">
+                <button type="submit">Add Monologue</button>
+            </div>
+        </form>
+    </div>
+    <script src="addMonologue.js"></script>
+</body>
+</html>

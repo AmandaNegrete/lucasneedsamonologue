@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monologue Detail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="monologueDetail.css">
+</head>
+<body>
+
+    <!-- Add the 'monologue-page' class here -->
+    <div class="monologue-page">
+        <div class="container">
+            <div id="monologue-detail">
+                <h2>Loading...</h2> <!-- Placeholder text while loading -->
+            </div>
+            <button id="download-btn" style="display: none;">Download as PDF</button>
+            <button id="favorite-btn" style="display: none;">Add to Favorites</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Extract monologue ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const monologueId = urlParams.get('id');
+
+        // Function to fetch and display full monologue details
+        async function fetchMonologueDetail(id) {
+            try {
+                const res = await fetch(`/api/monologues/${id}`);
+                const monologue = await res.json();
+                console.log("Fetched monologue detail:", monologue); // Debugging: check data
+
+                // Display the full monologue details
+                const monologueDetail = document.getElementById('monologue-detail');
+                monologueDetail.innerHTML = `
+                    <h2>${monologue.title}</h2>
+                    <p><strong>By:</strong> ${monologue.author}</p>
+                    <p><strong>Category:</strong> ${monologue.category}</p>
+                    <p><strong>Description:</strong> ${monologue.description}</p>
+                    <p><strong>Full Monologue:</strong></p>
+                    <pre>${monologue.full_text}</pre>
+                `;
+
+                // Show the download and favorite buttons after the content is loaded
+                document.getElementById('download-btn').style.display = 'block';
+                document.getElementById('favorite-btn').style.display = 'block';
+
+                // Add event listener to the download button
+                document.getElementById('download-btn').addEventListener('click', () => {
+                    downloadMonologuePDF(monologue);
+                });
+
+                // Add event listener to the favorite button
+                document.getElementById('favorite-btn').addEventListener('click', () => {
+                    addToFavorites(monologue);
+                });
+            } catch (error) {
+                console.error("Error fetching monologue detail:", error);
+            }
+        }
+
+        // Function to download the monologue as a PDF
+        function downloadMonologuePDF(monologue) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const margin = 10;
+            const yPosStart = 20;
+            const maxWidth = 180;  // Adjust to fit within page width
+
+            doc.setFont("Javanese Text", "normal");
+            doc.setFontSize(12);
+            const text = `Title: ${monologue.title}\nBy: ${monologue.author}\n\n${monologue.full_text}`;
+            const lines = doc.splitTextToSize(text, maxWidth);
+
+            let yPos = yPosStart;
+
+            lines.forEach((line, index) => {
+                if (yPos + 10 > doc.internal.pageSize.height - margin) {
+                    doc.addPage();  // Add new page if we're near the bottom
+                    yPos = margin;  // Reset to the top of the new page
+                }
+                doc.text(line, margin, yPos);
+                yPos += 10;  // Move down a bit for next line
+            });
+
+            doc.save(`${monologue.title}.pdf`);
+        }
+
+
+        // Function to add the monologue to favorites
+        function addToFavorites(monologue) {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites.push(monologue);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            alert(`${monologue.title} has been added to your favorites!`);
+        }
+
+        // Fetch monologue detail when the page loads
+        fetchMonologueDetail(monologueId);
+    </script>
+</body>
+</html>

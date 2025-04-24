@@ -1,0 +1,111 @@
+/* Base Styles */
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fefcfb;
+    color: #3c2a4d;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff9f3;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #4a3a6e;
+}
+
+/* Form Layout */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 220px;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Labels & Inputs */
+label {
+    font-size: 16px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #5e4b8b;
+}
+
+input, textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    background-color: #ffffff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submit Button */
+.form-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button[type="submit"] {
+    background-color: #5e4b8b;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Playfair Display', serif;
+}
+
+button[type="submit"]:hover {
+    background-color: #4a3a6e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
+/* Placeholder Text Styling */
+input::placeholder,
+textarea::placeholder {
+    font-family: 'Playfair Display', serif;
+    color: #a18cb1;
+    font-style: italic;
+    font-size: 15px;
+}

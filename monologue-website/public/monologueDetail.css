@@ -1,0 +1,89 @@
+/* --- Monologue Detail Page Enhancements --- */
+.monologue-page {
+    background: radial-gradient(circle at top, #b7dafd, #e1f0ff);
+    font-family: 'Playfair Display', serif;
+    color: #3e2723;
+    padding: 40px 20px;
+}
+
+/* Refine detail container */
+.monologue-page .container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease;
+    max-width: 900px;
+}
+
+/* Detail heading */
+#monologue-detail h2 {
+    font-size: 2.4rem;
+    color: #000000;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Paragraph info styling */
+#monologue-detail p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* The monologue body */
+#monologue-detail pre {
+    background-color: #e7f5ff;
+    border-left: 6px solid #296df7;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Playfair Display', serif;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 15px;
+}
+
+/* Stylized download button */
+#download-btn {
+    background-color: #3a61ed;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#download-btn:hover {
+    background-color: #ab47bc;
+    transform: scale(1.05);
+}
+
+/* Favorite Button */
+#favorite-btn {
+    background-color: #ffca28;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#favorite-btn:hover {
+    background-color: #ffeb3b;
+    transform: scale(1.05);
+}
