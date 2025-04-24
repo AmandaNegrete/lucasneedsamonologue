@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Serve static files from the 'docs' folder (where your HTML, CSS, JS files are)
-app.use(express.static('docs')); 
+app.use(express.static(__dirname)); 
 
 // Serve index.html for the root route
 app.get('/', (req, res) => {
