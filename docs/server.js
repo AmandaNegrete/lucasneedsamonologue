@@ -5,7 +5,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static('docs'));
+
+// Serve static files from the 'docs' folder (where your HTML, CSS, JS files are)
+app.use(express.static('docs')); 
+
+// Serve index.html for the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));  // Ensure this path matches where your index.html is
+});
 
 const db = new sqlite3.Database('./monologues.db');
 
@@ -25,15 +32,6 @@ app.get('/api/monologues/:id', (req, res) => {
         res.json(row);
     });
 });
-
-app.get('/api/monologues', (req, res) => {
-    console.log('Received request for monologues');
-    db.all('SELECT * FROM monologues', [], (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(rows);
-    });
-});
-
 
 // Add a new monologue
 app.post('/api/monologues', (req, res) => {
@@ -100,6 +98,7 @@ app.post('/api/favorites/remove', (req, res) => {
     );
 });
 
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
