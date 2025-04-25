@@ -25,3 +25,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Failed to fetch favorites:', error);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to load and display the list of favorites
+    function loadFavorites() {
+        const favoritesList = document.getElementById('favorites-list');
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        favoritesList.innerHTML = ''; // Clear the current favorites list
+
+        if (favorites.length === 0) {
+            favoritesList.innerHTML = '<p>No favorites added yet!</p>';
+            return;
+        }
+
+        favorites.forEach(monologue => {
+            const div = document.createElement('div');
+            div.classList.add('monologue');
+            div.innerHTML = `
+                <h2>${monologue.title}</h2>
+                <p>By: ${monologue.author}</p>
+                <p>${monologue.description}</p>
+            `;
+            favoritesList.appendChild(div);
+        });
+    }
+
+    loadFavorites(); // Load favorites when the page is loaded
+});

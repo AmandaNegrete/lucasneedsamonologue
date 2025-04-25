@@ -90,12 +90,21 @@
         }
 
 
-        
         function addToFavorites(monologue) {
             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-            favorites.push(monologue);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert(`${monologue.title} has been added to your favorites!`);
+            // Check if the monologue is already in the favorites
+            if (!favorites.some(fav => fav.id === monologue.id)) {
+                favorites.push(monologue);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                alert(`${monologue.title} has been added to your favorites!`);
+            } else {
+                alert(`${monologue.title} is already in your favorites.`);
+            }
+            
+            // Optionally, refresh the favorites page content
+            if (window.location.pathname.includes('favorites.html')) {
+                loadFavorites(); // Reload favorites if the user is already on the favorites page
+            }
         }
 
         
