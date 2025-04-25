@@ -1,0 +1,19 @@
+body {
+    font-family: 'Playfair Display', serif;
+    padding: 2rem;
+    background: #f9f5f0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .monologue {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  

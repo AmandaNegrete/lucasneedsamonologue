@@ -1,28 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('add-monologue-form');
     
-    // Add event listener to handle form submission
     form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevent the default form submission (page reload)
-        
-        // Get the values from the form fields
+        event.preventDefault();
+
         const title = document.getElementById('title').value;
         const author = document.getElementById('author').value;
         const category = document.getElementById('category').value;
         const description = document.getElementById('description').value;
         const fullText = document.getElementById('full_text').value;
+        const era = document.getElementById('era').value;
+        const playName = document.getElementById('play_name').value;
 
-        // Create an object to send in the POST request
         const newMonologue = {
             title,
             author,
             category,
             description,
-            full_text: fullText
+            full_text: fullText,
+            era,
+            play_name: playName
         };
 
         try {
-            // Send the POST request to the backend to add the monologue
             const res = await fetch('/api/monologues', {
                 method: 'POST',
                 headers: {
@@ -32,11 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (res.ok) {
-                // If the request was successful, alert the user and redirect
                 alert('Monologue added successfully!');
-                window.location.href = 'index.html'; // Redirect to the main page or monologue list
+                window.location.href = 'index.html';
             } else {
-                // If there was an error, display the error message
                 const error = await res.json();
                 alert('Error adding monologue: ' + error.message);
             }

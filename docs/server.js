@@ -6,12 +6,12 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Serve static files from the 'docs' folder (where your HTML, CSS, JS files are)
+// Serve static files from the current directory (including HTML, CSS, JS)
 app.use(express.static(__dirname)); 
 
 // Serve index.html for the root route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'index.html'));  // Corrected path
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 const db = new sqlite3.Database('./monologues.db');
@@ -35,16 +35,15 @@ app.get('/api/monologues/:id', (req, res) => {
 
 // Add a new monologue
 app.post('/api/monologues', (req, res) => {
-    const { title, author, category, description, full_text } = req.body;
+    const { title, author, category, description, full_text, era, play_name } = req.body;
 
-    // Validate input
-    if (!title || !author || !category || !description || !full_text) {
+    if (!title || !author || !category || !description || !full_text || !era || !play_name) {
         return res.status(400).json({ message: 'All fields are required' });
     }
 
     db.run(
-        'INSERT INTO monologues (title, author, category, description, full_text) VALUES (?, ?, ?, ?, ?)',
-        [title, author, category, description, full_text],
+        'INSERT INTO monologues (title, author, category, description, full_text, era, play_name) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [title, author, category, description, full_text, era, play_name],
         function (err) {
             if (err) return res.status(500).json({ error: err.message });
             res.status(201).json({
@@ -54,6 +53,8 @@ app.post('/api/monologues', (req, res) => {
                 category,
                 description,
                 full_text,
+                era,
+                play_name
             });
         }
     );
