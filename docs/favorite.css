@@ -1,19 +1,42 @@
 body {
     font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom right, #f9f5f0, #f3ede6);
+    color: #333;
     padding: 2rem;
-    background: #f9f5f0;
+    margin: 0;
   }
   
   .container {
     max-width: 800px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
   
   .monologue {
-    background: white;
-    padding: 1rem;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  
+  .monologue:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .monologue h2 {
+    margin-top: 0;
+    font-size: 1.75rem;
+    color: #222;
+  }
+  
+  .monologue p {
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #555;
+  }
+  
   

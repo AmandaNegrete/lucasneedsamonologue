@@ -271,3 +271,36 @@ input[type="radio"] {
     accent-color: #5e4b8b;
     margin-right: 5px;
 }
+/* Favorites Button */
+.nav-link {
+    display: inline-block;
+    background: linear-gradient(to right, #ff6a00, #ffcc00); /* Gradient background */
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px; /* More rounded corners */
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+/* Hover effect */
+.nav-link:hover {
+    background: linear-gradient(to right, #ff5e00, #ffbf00); /* Slightly darker gradient */
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+}
+
+/* Active state for the button */
+.nav-link:active {
+    background: linear-gradient(to right, #e64a00, #e6a800); /* Darker gradient when clicked */
+}
+
+/* Icon styling (optional) */
+.nav-link::before {
+    content: '⭐'; /* Adds a star icon */
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 1.2em;
+}
