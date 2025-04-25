@@ -300,7 +300,6 @@ input[type="radio"] {
 
 /* Icon styling (optional) */
 .nav-link::before {
-    content: '⭐'; /* Adds a star icon */
     margin-right: 8px; /* Space between icon and text */
     font-size: 1.2em;
 }

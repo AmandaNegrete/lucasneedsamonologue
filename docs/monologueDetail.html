@@ -9,11 +9,11 @@
 </head>
 <body>
 
-    <!-- Add the 'monologue-page' class here -->
+    
     <div class="monologue-page">
         <div class="container">
             <div id="monologue-detail">
-                <h2>Loading...</h2> <!-- Placeholder text while loading -->
+                <h2>Loading...</h2> 
             </div>
             <button id="download-btn" style="display: none;">Download as PDF</button>
             <button id="favorite-btn" style="display: none;">Add to Favorites</button>
@@ -22,11 +22,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        // Extract monologue ID from the URL
+        
         const urlParams = new URLSearchParams(window.location.search);
         const monologueId = urlParams.get('id');
 
-        // Function to fetch and display full monologue details
         async function fetchMonologueDetail(id) {
             try {
                 const res = await fetch(`/api/monologues/${id}`);
@@ -44,16 +43,16 @@
                     <pre>${monologue.full_text}</pre>
                 `;
 
-                // Show the download and favorite buttons after the content is loaded
+                
                 document.getElementById('download-btn').style.display = 'block';
                 document.getElementById('favorite-btn').style.display = 'block';
 
-                // Add event listener to the download button
+                
                 document.getElementById('download-btn').addEventListener('click', () => {
                     downloadMonologuePDF(monologue);
                 });
 
-                // Add event listener to the favorite button
+                
                 document.getElementById('favorite-btn').addEventListener('click', () => {
                     addToFavorites(monologue);
                 });
@@ -62,7 +61,7 @@
             }
         }
 
-        // Function to download the monologue as a PDF
+       
         function downloadMonologuePDF(monologue) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -80,8 +79,8 @@
 
             lines.forEach((line, index) => {
                 if (yPos + 10 > doc.internal.pageSize.height - margin) {
-                    doc.addPage();  // Add new page if we're near the bottom
-                    yPos = margin;  // Reset to the top of the new page
+                    doc.addPage();  
+                    yPos = margin;  
                 }
                 doc.text(line, margin, yPos);
                 yPos += 10;  // Move down a bit for next line
@@ -91,7 +90,7 @@
         }
 
 
-        // Function to add the monologue to favorites
+        
         function addToFavorites(monologue) {
             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
             favorites.push(monologue);
@@ -99,7 +98,7 @@
             alert(`${monologue.title} has been added to your favorites!`);
         }
 
-        // Fetch monologue detail when the page loads
+        
         fetchMonologueDetail(monologueId);
     </script>
 </body>

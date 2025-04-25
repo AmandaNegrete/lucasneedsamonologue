@@ -1,4 +1,3 @@
-/* --- Monologue Detail Page Enhancements --- */
 .monologue-page {
     background: radial-gradient(circle at top, #b7dafd, #e1f0ff);
     font-family: 'Playfair Display', serif;
@@ -6,7 +5,6 @@
     padding: 40px 20px;
 }
 
-/* Refine detail container */
 .monologue-page .container {
     background-color: #ffffff;
     padding: 40px;
@@ -16,7 +14,6 @@
     max-width: 900px;
 }
 
-/* Detail heading */
 #monologue-detail h2 {
     font-size: 2.4rem;
     color: #000000;
@@ -24,7 +21,6 @@
     font-weight: bold;
 }
 
-/* Paragraph info styling */
 #monologue-detail p {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -32,7 +28,6 @@
     font-family: 'Playfair Display', serif;
 }
 
-/* The monologue body */
 #monologue-detail pre {
     background-color: #e7f5ff;
     border-left: 6px solid #296df7;
@@ -46,7 +41,6 @@
     margin-top: 15px;
 }
 
-/* Stylized download button */
 #download-btn {
     background-color: #3a61ed;
     color: white;
@@ -67,7 +61,6 @@
     transform: scale(1.05);
 }
 
-/* Favorite Button */
 #favorite-btn {
     background-color: #ffca28;
     color: white;

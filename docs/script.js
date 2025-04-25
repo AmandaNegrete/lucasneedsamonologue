@@ -5,26 +5,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const favoritesList = document.getElementById('favorites-list');
     const eraFilterInputs = document.querySelectorAll('input[name="era"]');
 
-    const userId = 1;  // Static user ID for testing, adjust accordingly
+    const userId = 1;  
     
     
-    // Function to fetch and display all monologues
+    
     async function fetchMonologues(query = '') {
         try {
             const res = await fetch(`/api/monologues`);
             const monologues = await res.json();
-            console.log("Monologues fetched:", monologues); // Debugging: check fetched data
+            console.log("Monologues fetched:", monologues); 
             
-            // Get the selected era from the radio buttons
+            
             const era = document.querySelector('input[name="era"]:checked')?.value || 'All';
     
-            // Apply the filters for both query and era
+            
             const filteredMonologues = monologues.filter(monologue =>
                 monologue.title.toLowerCase().includes(query.toLowerCase()) &&
                 (era === 'All' || monologue.era?.toLowerCase() === era.toLowerCase())
             );
     
-            // Clear and update the monologue list
+            
             monologueList.innerHTML = ''; // Clear the monologue list first
             filteredMonologues.forEach(monologue => {
                 const div = document.createElement('div');
@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    // Function to fetch and display full monologue details
-    // Function to download the monologue text as a PDF
+   
     function downloadMonologue(id) {
         fetch(`/api/monologues/${id}`)
             .then(res => res.json())
